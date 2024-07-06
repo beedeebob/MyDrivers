@@ -148,9 +148,21 @@ BFLASH_ERR BFLASH_ConfigureFlash (uint32_t jedecID)
 		flashInfo.flashSize = 0x800000;
 		flashInfo.pageSize = 0x100;
 		flashInfo.sectorSize = 0x1000;
+		flashInfo.isReady = 1;
 		return BFLASH_ERROK;
 	}
 	return BFLASH_ERRNOTSUPPORTED;
+}
+
+/* ---------------------------------------------------------------------------*/
+/**
+  * @brief 	Configure the flash using the JEDEC ID
+  * @param 	jedecID: JEDEC ID of the flash
+  * @retval None
+  */
+BFLASH_Info_td *BFLASH_GetInfo(void)
+{
+	return &flashInfo;
 }
 
 /* ---------------------------------------------------------------------------*/

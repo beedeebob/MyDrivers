@@ -15,9 +15,10 @@
 typedef struct
 {
 	uint32_t jedecID;
+	uint32_t flashSize;
 	uint16_t sectorSize;
 	uint16_t pageSize;
-	uint32_t flashSize;
+	uint8_t isReady:1;
 }BFLASH_Info_td;
 typedef enum
 {
@@ -51,6 +52,7 @@ BFLASH_ERR BFLASH_Read (BFLASH_Access_td *user);
 BFLASH_ERR BFLASH_Write(BFLASH_Access_td *user);
 BFLASH_ERR BFLASH_EraseFlash(BFLASH_Access_td *user);
 BFLASH_ERR BFLASH_EraseSector(BFLASH_Access_td *user);
+BFLASH_Info_td *BFLASH_GetInfo(void);
 
 //SPI Control Routines
 void BFLASH_TransmitCompleteHandler(void);
